@@ -1,0 +1,30 @@
+accounts:
+# Each account is created via the dashboard's "+Create" button.
+# Default values for new accounts come from CONFIG/defaults.yaml.
+# To get player_tag and ID go to diablo.trade - settings - reveal tag / reveal ID - > copy -> paste
+- ai_model: gemini-2.0-flash-lite
+  bot_enabled: false
+  cdp_port: 9222
+  cdp_url: http://localhost:9222
+  discord_channel_id: 0         # right-click Discord channel → Copy Channel ID
+  id: a3f1b2c4-5678-9abc-def0-111111111111
+  player_tag: "YourTag#1234"    # your BattleTag on diablo.trade
+  proxy: null                   # optional: "http://user:pass@host:port"
+  session_dir: null             # auto-detected; or absolute path to session folder
+  use_ai: false
+  use_templates: true
+  username: MyAccount           # display name shown in dashboard tabs
+
+# Add more accounts by creating them in the dashboard, or copy this block:
+# - ai_model: gemini-2.0-flash-lite
+#   bot_enabled: false
+#   cdp_port: 9223
+#   cdp_url: http://localhost:9223
+#   discord_channel_id: 0
+#   id: b4e2c3d5-6789-0abc-def1-222222222222
+#   player_tag: "AltTag#5678"
+#   proxy: null
+#   session_dir: null
+#   use_ai: false
+#   use_templates: true
+#   username: AltAccount

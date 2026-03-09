@@ -1,0 +1,90 @@
+from __future__ import annotations
+
+from typing import Any
+
+async def fetch_listing(page, uuid: str) -> Any:
+    return await page.evaluate(
+        """async (uuid) => {
+            const r = await fetch('/api/listing/get?ids=' + uuid);
+            if (!r.ok) return {__error: r.status};
+            const data = await r.json();
+            if (Array.isArray(data) && data.length > 0) return data[0];
+            if (typeof data === 'object') return data;
+            return null;
+        }""",
+        uuid,
+    )
+
+async def fetch_my_listings(
+    page,
+    page_num: int,
+    take: int,
+    game_mode: str,
+    sold: bool,
+    removed: bool,
+) -> Any:
+    return await page.evaluate(
+        """async ([pageNum, take, gameMode, sold, removed]) => {
+            const r = await fetch('/user/listings?realm=' + gameMode, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'text/plain;charset=UTF-8',
+                    'Next-Action': '40d8673950402c5e3c84efe15c67c2383646c14444',
+                    'Accept': 'text/x-component'
+                },
+                body: JSON.stringify([{
+                    pagination: { page: pageNum, take: take },
+                    filters: {
+                        sort: undefined,
+                        gameMode: gameMode,
+                        listingType: 'ITEM',
+                        listingMode: null,
+                        statFilters: [],
+                        sold: sold,
+                        removed: removed,
+                        name: undefined,
+                        itemCategory: undefined,
+                        classType: undefined,
+                        itemRarity: undefined
+                    }
+                }])
+            });
+            return await r.text();
+        }""",
+        [page_num, take, game_mode, sold, removed],
+    )
+
+async def mark_item_sold(
+    page,
+    item_id: str,
+    sold_price: int,
+    quantity: int,
+    game_mode: str,
+) -> Any:
+    return await page.evaluate(
+        """async ([itemId, soldPrice, quantity, gameMode]) => {
+            const r = await fetch('/user/listings?realm=' + gameMode, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'text/plain;charset=UTF-8',
+                    'Next-Action': '40a63b8469da4935b308394a2e7079df10dd0bb219',
+                    'Accept': 'text/x-component'
+                },
+                body: JSON.stringify([
+                    {
+                        id: itemId,
+                        isSold: true,
+                        soldPrice: soldPrice,
+                        quantity: quantity
+                    },
+                    {
+                        client: "$T",
+                        meta: undefined,
+                        mutationKey: undefined
+                    }
+                ])
+            });
+            return r.ok;
+        }""",
+        [item_id, sold_price, quantity, game_mode],
+    )

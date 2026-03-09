@@ -1,0 +1,14 @@
+# ─── New Account Defaults ────────────────────────────────────────────────────
+# These values are pre-filled when you create a new account in the dashboard.
+# Edit them to customize the starting configuration for every new account.
+# Set a value to null (or remove the line) to leave it blank.
+
+new_account_defaults:
+  proxy: null                           # null = no proxy (disabled by default)
+  cdp_port: auto                        # auto = next available port starting from 9222
+  cdp_url: auto                         # auto = http://localhost:{cdp_port}
+  discord_channel_id:                   # 0 = uses global channel from config.yaml
+  use_ai: true                          # enable AI replies for new accounts
+  use_templates: false                  # enable template-based replies
+  ai_model: "gemini-2.0-flash-lite"     # AI model (gemini-2.0-flash, gemini-1.5-pro, etc.)
+  bot_enabled: false                    # autostart bot when program launches

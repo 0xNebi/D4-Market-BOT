@@ -1,0 +1,44 @@
+
+ARCHIVE/
+# ── Secrets & personal configuration ──────────────────────────────────────────
+CONFIG/.env
+CONFIG/accounts.yaml
+
+# ── Runtime / generated data ──────────────────────────────────────────────────
+DATA/
+BOT/DATA/
+*.db
+*.db-wal
+*.db-shm
+
+# ── Session data (browser profiles for CDP) ────────────────────────────────────
+DATA/sessions/
+
+# ── Logs ──────────────────────────────────────────────────────────────────────
+DATA/logs/
+*.log
+
+# ── Build artefacts ───────────────────────────────────────────────────────────
+SRC/web_ui/frontend/dist/
+SRC/web_ui/frontend/node_modules/
+
+# ── Temp / test data files with personal info ─────────────────────────────────
+SRC/web_ui/frontend/temp.json
+*.temp.json
+
+# ── Python cache ──────────────────────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+
+# ── IDE / OS ──────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
