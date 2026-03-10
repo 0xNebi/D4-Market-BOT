@@ -29,7 +29,7 @@ async def fetch_my_listings(
                 method: 'POST',
                 headers: {
                     'Content-Type': 'text/plain;charset=UTF-8',
-                    'Next-Action': '40d8673950402c5e3c84efe15c67c2383646c14444',
+                    'Next-Action': '409e07e589fc6063a0194c322aa52bf263c3afc209',
                     'Accept': 'text/x-component'
                 },
                 body: JSON.stringify([{
@@ -67,7 +67,7 @@ async def mark_item_sold(
                 method: 'POST',
                 headers: {
                     'Content-Type': 'text/plain;charset=UTF-8',
-                    'Next-Action': '40a63b8469da4935b308394a2e7079df10dd0bb219',
+                    'Next-Action': '405203b464bb67a7b104df577609a737945c4ae7ce',
                     'Accept': 'text/x-component'
                 },
                 body: JSON.stringify([
@@ -87,4 +87,68 @@ async def mark_item_sold(
             return r.ok;
         }""",
         [item_id, sold_price, quantity, game_mode],
+    )
+
+async def create_material_listing(
+    page,
+    material_id: str,
+    quantity: int,
+    price: int,
+    game_mode: str,
+) -> Any:
+    return await page.evaluate(
+        """async ([materialId, quantity, price, gameMode]) => {
+            const r = await fetch('/listings/create/material', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'text/plain;charset=UTF-8',
+                    'Next-Action': '402eea4b00374b5a90a52a17c7d1ebabdff70fd343',
+                    'Accept': 'text/x-component'
+                },
+                body: JSON.stringify([
+                    {
+                        materialId: materialId,
+                        itemQuantity: quantity,
+                        price: price,
+                        gameMode: gameMode,
+                        listingMode: "SELLING"
+                    },
+                    {
+                        client: "$T",
+                        meta: undefined,
+                        mutationKey: undefined
+                    }
+                ])
+            });
+            return r.ok;
+        }""",
+        [material_id, quantity, price, game_mode],
+    )
+
+async def delete_listing(
+    page,
+    listing_id: str,
+    status_filter: str = "SOLD"
+) -> Any:
+    return await page.evaluate(
+        """async ([listingId, statusFilter]) => {
+            const r = await fetch('/user/listings?status=' + statusFilter, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'text/plain;charset=UTF-8',
+                    'Next-Action': '40734c704d8221ef0c4e376af667a48ea8020e3ab3',
+                    'Accept': 'text/x-component'
+                },
+                body: JSON.stringify([
+                    listingId,
+                    {
+                        client: "$T",
+                        meta: undefined,
+                        mutationKey: undefined
+                    }
+                ])
+            });
+            return r.ok;
+        }""",
+        [listing_id, status_filter],
     )
