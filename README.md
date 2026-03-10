@@ -100,8 +100,8 @@ SRC/web_ui/frontend/   React + TypeScript + Vite + Tailwind + Recharts
 ### 1. Clone the repository
 
 ```bash
-git clone <repo-url>
-cd D4-Market
+git clone https://github.com/0xNebi/D4-Market-BOT.git
+cd D4-Market-BOT
 ```
 
 ### 2. Install Python dependencies (choose one)
