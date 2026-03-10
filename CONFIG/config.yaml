@@ -42,7 +42,7 @@ notifications:
   summary_time: "23:59"
 
 discord_bot:
-  channel_id: 1477437238567764019          # channel ID for notifications (right-click channel → Copy ID)
+  channel_id: 123456789012345          # channel ID for notifications (right-click channel → Copy ID)
 
 storage:
   db_path: "DATA/bot.db"
