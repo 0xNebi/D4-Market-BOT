@@ -3,6 +3,7 @@ ARCHIVE/
 # ── Secrets & personal configuration ──────────────────────────────────────────
 CONFIG/.env
 CONFIG/accounts.yaml
+CONFIG/config.yaml
 
 # ── Runtime / generated data ──────────────────────────────────────────────────
 DATA/
