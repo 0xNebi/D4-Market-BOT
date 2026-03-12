@@ -164,6 +164,11 @@ TARGET_URL=https://diablo.trade
 
 ### CONFIG/config.yaml
 
+```bash
+cp CONFIG/config.yaml.example CONFIG/config.yaml
+```
+
+
 Global settings. All values here override the built-in defaults. Per-account `accounts.yaml` overrides these for each session.
 
 ```yaml
