@@ -1,0 +1,52 @@
+bot:
+  check_interval: 10
+  restart_on_error: true
+  max_retries: 3
+  debug_mode: false      # set true to save extra screenshots + DOM snapshots on every action
+  auto_accept_bnet_reveal: true   # automatically accept Battle.net tag reveal requests
+  message_batch_window: 5.0       # seconds to wait for more messages before replying
+  hold_expiry_seconds: 300       # auto-release holds after 5 minutes
+  inventory_refresh_interval: 300  # refresh inventory cache every 5 minutes
+
+browser:
+  headless: true
+  target_url: "https://diablo.trade"
+
+reply:
+  use_ai: false
+  ai_threshold: "complex"       # always | complex | simple
+  gemini_model: "gemini-2.0-flash-lite"
+  min_delay_ms: 800
+  max_delay_ms: 2500
+  template_ready_to_buy: "yeah item is ready, add me {battletag}"
+  template_price_inquiry: "looking for {price} gold for that one. {battletag} if interested"
+  template_still_available: "yep still available, {battletag}"
+  template_lowball_decline: "nah sorry cant go that low"
+  template_unknown: "hey, lmk what item ur looking at and ill check. {battletag}"
+  template_item_reserved: "that one is reserved for someone rn, ill msg u if it falls through"
+
+control_server:
+  enabled: true
+  port: 8080
+
+logging:
+  level: "INFO"
+  rotation: "1 day"
+  retention: "7 days"
+  log_dir: "DATA/logs"
+
+notifications:
+  discord_enabled: true
+  discord_notify_on_offer: true
+  discord_daily_summary: true
+  summary_time: "23:59"
+
+discord_bot:
+  channel_id: 1234567890123456789          # channel ID for notifications (right-click channel → Copy ID)
+
+storage:
+  db_path: "DATA/bot.db"
+
+price_rules:
+  auto_decline_below_pct: 50.0
+  auto_accept_above_pct: 90.0
