@@ -29,7 +29,7 @@ async def fetch_my_listings(
                 method: 'POST',
                 headers: {
                     'Content-Type': 'text/plain;charset=UTF-8',
-                    'Next-Action': '402f2c57237dd1eafb323a8418e64d0dc646488605',
+                    'Next-Action': '40995375d2786002f73fd7be6f453dcbaab2c83589',
                     'Accept': 'text/x-component'
                 },
                 body: JSON.stringify([{
@@ -67,7 +67,7 @@ async def mark_item_sold(
                 method: 'POST',
                 headers: {
                     'Content-Type': 'text/plain;charset=UTF-8',
-                    'Next-Action': '4058347c205eaac602dd0469c57b83b2f65e795221',
+                    'Next-Action': '40b3c668bcbad47c4bfaf108e40919d458d098adf7',
                     'Accept': 'text/x-component'
                 },
                 body: JSON.stringify([
@@ -102,7 +102,7 @@ async def create_material_listing(
                 method: 'POST',
                 headers: {
                     'Content-Type': 'text/plain;charset=UTF-8',
-                    'Next-Action': '402f2c57237dd1eafb323a8418e64d0dc646488605',
+                    'Next-Action': '40995375d2786002f73fd7be6f453dcbaab2c83589',
                     'Accept': 'text/x-component'
                 },
                 body: JSON.stringify([
@@ -136,7 +136,7 @@ async def delete_listing(
                 method: 'POST',
                 headers: {
                     'Content-Type': 'text/plain;charset=UTF-8',
-                    'Next-Action': '4093f3fcf08bdba171ea41e43c9b1cad457cbbbc4d',
+                    'Next-Action': '408c6b37ae715924c622235501cc32cd03c0350c16',
                     'Accept': 'text/x-component'
                 },
                 body: JSON.stringify([
